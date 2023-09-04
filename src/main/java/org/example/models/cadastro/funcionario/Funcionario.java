@@ -7,7 +7,7 @@ public class Funcionario extends Pessoa implements IPessoa {
 
     @Override
     public void cadastrar() {
-
+        String nome;
     }
 
     @Override
