@@ -1,15 +1,33 @@
-package org.example.models.cadastro.pessoa.abstracts;
+package org.example.models.cadastro.pessoa;
 
+import javax.persistence.*;
+import java.util.UUID;
+
+@Entity
+@Table(name = "Enderecos")
 public class Endereco {
 
-    private String cidade;
-    private String estado;
-    private String bairro;
-    private String rua;
-    private String numero;
-    private String complemento;
-    private String observacaoEndereco;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private UUID idEndereco;
 
+    @ManyToOne
+    @JoinColumn(name = "idPessoa", referencedColumnName = "idPessoa")
+    private ModelPessoa pessoa;
+    @Column(nullable = false, length = 255)
+    private String cidade;
+    @Column(nullable = false, length = 255)
+    private String estado;
+    @Column(nullable = false, length = 255)
+    private String bairro;
+    @Column(nullable = false, length = 255)
+    private String rua;
+    @Column(nullable = false, length = 255)
+    private String numero;
+    @Column(nullable = false, length = 255)
+    private String complemento;
+    @Column(nullable = false, length = 255)
+    private String observacaoEndereco;
 
     public String getCidade() {
         return cidade;

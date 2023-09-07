@@ -1,21 +1,19 @@
 package org.example;
 
-import org.example.models.cadastro.funcionario.Funcionario;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
 
+@SpringBootApplication
+@RestController
 public class Main {
     public static void main(String[] args) {
+        SpringApplication.run(Main.class, args);
+    }
 
-        Funcionario funcionario = new Funcionario();
-        funcionario.setNome("Rafael Gomes de Oliveira");
-        funcionario.setSobreNome("Gomes de Oliveira");
-        funcionario.setDataNascimento("27.01.2000");
-        funcionario.setGenero('M');
-        funcionario.setNacionalidade("Brasileiro");
-        funcionario.setNumeroCpf("071.888.851-09");
-        funcionario.setEstadoCivil("Casado");
-        funcionario.setNumeroRG(2311404);
-        funcionario.setOrgaoExpedidor("ssp/ms");
-        System.out.println(funcionario);
-
+    @GetMapping("/")
+    public String index(){
+        return "Olá Mundo RAFAEL!";
     }
 }

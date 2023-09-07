@@ -1,17 +1,43 @@
-package org.example.models.cadastro.pessoa.abstracts;
+package org.example.models.cadastro.pessoa;
 
-public abstract class Pessoa {
+import javax.persistence.*;
+import java.io.Serializable;
+import java.util.UUID;
 
+@Entity
+@Table(name = "Pessoa")
+@Inheritance(strategy = InheritanceType.JOINED)
+public class ModelPessoa implements Serializable {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private UUID idPessoa;
+    @Column(nullable = false, length = 255)
     private String nome;
+    @Column(nullable = false, length = 255)
     private String sobreNome;
-
+    @Column(nullable = false, length = 255)
     private String nacionalidade;
+    @Column(nullable = false, length = 255)
     private String dataNascimento;
+    @Column(nullable = false, length = 255)
     private String estadoCivil;
-    private char genero;
+    @Column(nullable = false, length = 255)
+    private String genero;
+    @Column(nullable = false, length = 255, unique = true)
     private int numeroRG;
+    @Column(nullable = false, length = 255)
     private String orgaoExpedidor;
+    @Column(nullable = false, length = 255, unique = true)
     private String numeroCpf;
+
+    public UUID getIdPessoa() {
+        return idPessoa;
+    }
+
+    public void setIdPessoa(UUID idPessoa) {
+        this.idPessoa = idPessoa;
+    }
 
     public String getNome() {
         return nome;
@@ -53,11 +79,11 @@ public abstract class Pessoa {
         this.estadoCivil = estadoCivil;
     }
 
-    public char getGenero() {
+    public String getGenero() {
         return genero;
     }
 
-    public void setGenero(char genero) {
+    public void setGenero(String genero) {
         this.genero = genero;
     }
 
